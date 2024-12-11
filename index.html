@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="dark:bg-black dark:text-white">
+    <div id="overlay" class="fixed inset-0 z-20 hidden bg-black opacity-50"></div>
+    <div class="fixed top-0 left-0 z-30 items-center justify-between hidden w-full gap-2 p-3 bg-white border-b dark:bg-black dark:text-white dark:border-gray-700"
+        id="searchbar">
+        <div class="flex w-full">
+            <input class="w-full px-2 py-[7px] border-2 border-r-0 border-gray-100 rounded-s-full text-md bg-transparent focus:outline-none dark:border-gray-700" placeholder="Search" />
+            <button type="button" class="p-2 px-3 transition duration-200 bg-gray-100 rounded-e-full hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                <i class="text-lg fal fa-search"></i>
+            </button>
+        </div>
+        <div>
+            <i class="cursor-pointer fa fa-times fa-2xl"></i>
+        </div>
+    </div>
+    <header class="fixed top-0 z-10 flex items-center justify-between w-full p-3 bg-white border-b dark:bg-black dark:border-gray-700">
+        <div class="flex items-center">
+            <i class="mr-6 text-2xl cursor-pointer fal fa-bars"></i>
+            <a href="index.html" class="inline-flex items-center">
+                <img src="img/logo.png" alt="" class="h-6 mr-1">
+                <span class="text-2xl font-bold">YouTube</span>
+            </a>
+        </div>
+        <div class="hidden gap-2 md:flex">
+            <div class="flex">
+                <input class="px-2 py-1 bg-transparent border-2 border-r-0 border-gray-100 rounded-s-full text-md focus:outline-none dark:border-gray-800" placeholder="Search" />
+                <button type="button" class="p-2 px-3 transition duration-200 bg-gray-100 rounded-e-full hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                    <i class="text-lg fal fa-search"></i>
+                </button>
+            </div>
+            <button type="button" class="px-3 transition duration-200 bg-gray-100 rounded-full hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600">
+                <i class="text-lg fa fa-microphone"></i>
+            </button>
+        </div>
+        <div class="flex items-center gap-2">
+            <i class="text-lg cursor-pointer fa fa-search md:!hidden" id="search-icon"></i>
+            <i class="text-3xl cursor-pointer bx bx-video-plus"></i>
+            <i class="text-3xl cursor-pointer bx bx-bell"></i>
+            <img src="img/profile.png" class="w-8 h-8 rounded-full cursor-pointer" alt="Channel logo"></img>
+        </div>
+    </header>
+    <main class="relative">
+        <aside class="fixed md:top-[65px] top-0 md:h-[calc(100vh-65px)] md:left-0 overflow-y-auto border-r w-60 -left-full h-screen z-30 bg-white transition duration-200 dark:bg-black" id="sidebar">
+            <div class="flex items-center block p-3 md:hidden">
+                <i class="mr-6 text-2xl cursor-pointer fal fa-bars"></i>
+                <a href="index.html" class="inline-flex items-center">
+                    <img src="img/logo.png" alt="" class="h-6 mr-1">
+                    <span class="text-2xl font-bold">YouTube</span>
+                </a>
+            </div>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-2 fal fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-2 fal fa-video"></i>
+                <span>Shorts</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-tv"></i>
+                <span>Subscriptions</span>
+            </a>
+            <hr class="my-1 dark:border-gray-700">
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-user-circle"></i>
+                <span>Your channel</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 bx bxs-playlist"></i>
+                <span>Playlists</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-clock"></i>
+                <span>Watch later</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-thumbs-up"></i>
+                <span>Liked videos</span>
+            </a>
+            <hr class="my-1 dark:border-gray-700">
+            <h4 class="mb-1 ml-2 text-lg font-semibold">Explore</h4>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-fire"></i>
+                <span>Trending</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-music"></i>
+                <span>Music</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-gamepad"></i>
+                <span>Gaming</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-trophy"></i>
+                <span>Sports</span>
+            </a>
+            <hr class="my-1 dark:border-gray-700">
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-flag"></i>
+                <span>Report history</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-question-circle"></i>
+                <span>Help</span>
+            </a>
+            <a href="#" class="block p-4 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="mr-1 fal fa-exclamation-triangle"></i>
+                <span>Feedback</span>
+            </a>
+        </aside>
+        <div class="absolute top-16 left-0 w-full md:w-[calc(100%-15rem)] md:left-60 p-3 overflow-x-hidden" id="container">
+            <div class="flex overflow-x-scroll gap-2 mb-3 [scrollbar-width:none]">
+                <button type="button" class="px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-full whitespace-nowrap dark:text-black dark:bg-gray-100">All</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Gaming</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Website</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Programming</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Computer Science</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">JavaScript</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Python</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">Tailwind CSS</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">PHP</button>
+                <button type="button" class="px-4 py-2 bg-gray-100 border border-gray-400 rounded-full whitespace-nowrap dark:text-white dark:bg-gray-800">News</button>
+            </div>
+            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3" id="video-gallery">
+                <a href="https://youtu.be/NNpXd89A67Y">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/NNpXd89A67Y/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">5:15</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Rock Paper Scissors Game using Python</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>46 views &middot; 1 month ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/XeQ5nwXXTqw">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/XeQ5nwXXTqw/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">6:01</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">🍦Turkish Ice Cream Developer Login Form using HTML, CSS, and JavaScript</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>151 views &middot; 5 months ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/UPc_OIEAZL4">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/UPc_OIEAZL4/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">10:07</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Memory Game using HTML, CSS and JavaScript | JavaScript Games</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>122 views &middot; 1 year ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/wH0B-f4V0lU">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/wH0B-f4V0lU/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">2:21</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Kinetic Loader Animation using HTML and CSS</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>44 views &middot; 7 months ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/HdKDtadksPA">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/HdKDtadksPA/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">5:15</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">First time I made Pop it Game using HTML, CSS and JavaScript</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>1.3K views &middot; 2 years ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/V5ajG_XQVUU">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/V5ajG_XQVUU/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">5:20</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Analog Clock with HTML, CSS and JavaScript | JavaScript Project</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>143 views &middot; 2 years ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/EO4Iq4XQtlE">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/EO4Iq4XQtlE/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">5:41</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Digital Clock with Date using HTML, CSS and JavaScript | JavaScript Project</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>359 views &middot; 2 years ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/1OuAfchLFVg">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/1OuAfchLFVg/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">12:57</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Breakout Game using HTML, CSS and JavaScript | JavaScript Games</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>1K views &middot; 1 year ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/TeZP6vBWV6M">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/TeZP6vBWV6M/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">9:38</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Tic Tac Toe Game using HTML, CSS and JavaScript | JavaScript Game</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>997 views &middot; 1 year ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/9G4N_Ptj7C8">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/9G4N_Ptj7C8/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">7:00</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Happy New Year 2022 With Countdown Using CSS Animation, JavaScript & jQuery</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>1.3K views &middot; 2 years ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/-X8Yy_UgoLQ">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/-X8Yy_UgoLQ/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">2:08</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Scary Ghost Using Python</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>129 views &middot; 4 years ago</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://youtu.be/zLXbkBR9hlo">
+                    <div class="relative mb-2">
+                        <img src="https://i.ytimg.com/vi/zLXbkBR9hlo/maxresdefault.jpg" alt="thumbnail" class="w-full rounded-md">
+                        <span class="absolute px-1 font-semibold text-white bg-black rounded bottom-1 right-1">5:32</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <img src="img/profile.png" alt="" class="w-12 rounded-full">
+                        <div class="text-gray-500 dark:text-gray-400">
+                            <p class="font-semibold text-black text-md dark:text-white line-clamp-2">Eid Mubarak using HTML, CSS animation and JavaScript</p>
+                            <p>Ashiqur Rahman Pranto</p>
+                            <p>1K views &middot; 2 years ago</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
